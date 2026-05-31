@@ -78,10 +78,10 @@ async function selectPlayer(player: any) {
               }"
             />
 
-            <div
-              v-if="players.length"
-              class="absolute z-50 mt-4 max-h-[360px] w-full overflow-auto rounded-3xl border border-lime-300/30 bg-[#101b12]/95 p-2 text-left shadow-2xl backdrop-blur"
-            >
+<div
+  v-if="players.length"
+  class="relative z-50 mt-4 max-h-[320px] w-full overflow-auto rounded-3xl border border-lime-300/30 bg-[#101b12]/95 p-2 text-left shadow-2xl backdrop-blur"
+>
               <button
                 v-for="player in players"
                 :key="player.NumFed"
@@ -109,6 +109,78 @@ async function selectPlayer(player: any) {
           </p>
         </div>
       </section>
+
+      <!-- PRESENTATION -->
+<section class="mx-auto mt-10 max-w-6xl">
+  <div class="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+    <div class="rounded-[2rem] border border-lime-300/20 bg-white/10 p-8 backdrop-blur md:p-10">
+      <p class="font-semibold uppercase tracking-[0.35em] text-lime-300">
+        Pourquoi Hawk ?
+      </p>
+
+      <h2 class="mt-4 text-3xl font-black tracking-tight md:text-5xl">
+        Le tennis belge mérite
+        <span class="text-lime-300">
+          mieux que des tableaux bruts.
+        </span>
+      </h2>
+
+      <p class="mt-6 text-lg leading-relaxed text-white/70">
+        Hawk est né d’un constat simple : les outils actuels permettent de consulter des informations,
+        mais exploitent encore trop peu le potentiel des données disponibles.
+      </p>
+
+      <p class="mt-4 text-lg leading-relaxed text-white/70">
+        L’objectif est d’aller plus loin : centraliser, enrichir et rendre accessibles les statistiques
+        des joueurs de tennis belge à travers une interface moderne, rapide et intuitive.
+      </p>
+
+      <p class="mt-4 text-lg leading-relaxed text-white/70">
+        Développé entièrement par <strong class="text-white">Arthur Longrée</strong> depuis le
+        <strong class="text-white">31/05/2026</strong>, Hawk évolue régulièrement avec de nouvelles
+        fonctionnalités prévues autour des performances, des graphiques et de l’analyse joueur.
+      </p>
+    </div>
+
+    <div class="grid gap-4">
+      <div class="rounded-3xl border border-lime-300/20 bg-black/20 p-6 backdrop-blur">
+        <p class="text-3xl font-black text-lime-300">
+          100%
+        </p>
+        <h3 class="mt-2 text-xl font-bold">
+          Gratuit pour le moment
+        </h3>
+        <p class="mt-2 text-sm leading-relaxed text-white/60">
+          Un outil librement accessible pendant sa phase de développement.
+        </p>
+      </div>
+
+      <div class="rounded-3xl border border-lime-300/20 bg-black/20 p-6 backdrop-blur">
+        <p class="text-3xl font-black text-lime-300">
+          Data
+        </p>
+        <h3 class="mt-2 text-xl font-bold">
+          Stats enrichies
+        </h3>
+        <p class="mt-2 text-sm leading-relaxed text-white/60">
+          Classements, résultats, winrate, historique et indicateurs de performance.
+        </p>
+      </div>
+
+      <div class="rounded-3xl border border-lime-300/20 bg-black/20 p-6 backdrop-blur">
+        <p class="text-3xl font-black text-lime-300">
+          +
+        </p>
+        <h3 class="mt-2 text-xl font-bold">
+          Mises à jour régulières
+        </h3>
+        <p class="mt-2 text-sm leading-relaxed text-white/60">
+          De nouvelles fonctionnalités seront ajoutées au fur et à mesure de l’évolution du projet.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
 
       <!-- Loading -->
       <div v-if="loadingPlayer" class="mt-12 text-center text-white/70">
