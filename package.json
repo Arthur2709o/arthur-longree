@@ -14,9 +14,11 @@
     "@iconify-json/lucide": "^1.2.106",
     "@iconify-json/simple-icons": "^1.2.81",
     "@nuxt/ui": "^4.7.1",
+    "apexcharts": "^5.13.0",
     "cheerio": "^1.2.0",
     "nuxt": "^4.4.5",
-    "tailwindcss": "^4.3.0"
+    "tailwindcss": "^4.3.0",
+    "vue3-apexcharts": "^1.11.1"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.15.2",
