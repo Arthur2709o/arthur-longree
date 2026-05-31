@@ -21,8 +21,7 @@ function submitForm() {
         </h1>
 
         <p class="mt-6 text-lg text-muted">
-          Une question, un projet ou simplement envie d’échanger autour du digital ?
-          Laissez-moi un message et je vous répondrai rapidement.
+          Une question ? Laissez-moi un message et je vous répondrai rapidement.
         </p>
       </div>
 
@@ -42,15 +41,6 @@ function submitForm() {
               v-model="form.email"
               type="email"
               placeholder="vous@email.com"
-              size="xl"
-              class="w-full"
-            />
-          </UFormField>
-
-          <UFormField label="Entreprise">
-            <UInput
-              v-model="form.company"
-              placeholder="Nom de votre entreprise"
               size="xl"
               class="w-full"
             />

@@ -12,8 +12,9 @@ useHead({
   }
 })
 
-const title = 'Arthur Longrée | Marketing digital'
-const description = 'Conseils en SEO, SEA et création de sites internet pour développer une présence digitale plus claire, plus moderne et plus performante.'
+const title = 'Hawk | Tennis Stats'
+const description =
+  'Recherche et analyse moderne des joueurs de tennis affiliés.'
 
 useSeoMeta({
   title,
@@ -26,27 +27,36 @@ useSeoMeta({
 
 <template>
   <UApp>
-    <UHeader>
+    <UHeader
+      class="border-b border-white/10 bg-[#07110b]/95 backdrop-blur"
+    >
       <template #left>
-        <NuxtLink to="/" class="text-xl font-bold">
-          Arthur Longrée
+        <NuxtLink
+          to="/"
+          class="text-xl font-black tracking-wide text-white hover:text-[#B7F34D] transition-colors"
+        >
+          Hawk
         </NuxtLink>
       </template>
 
       <template #right>
-      <UButton to="/parcours" variant="ghost" color="neutral">
-      Parcours
-      </UButton>
+        <div class="flex items-center gap-3">
+          <UButton
+            to="/"
+            class="bg-[#B7F34D] text-black hover:bg-[#c8ff63] border-0 font-semibold"
+          >
+            Accueil
+          </UButton>
 
-        <UButton to="/expertises" variant="ghost" color="neutral">
-        Expertises
-        </UButton>
+          <UButton
+            to="/contact"
+            variant="ghost"
+            class="text-white/80 hover:text-[#B7F34D] hover:bg-white/5 font-semibold"
+          >
+            Contact
+          </UButton>
 
-        <UButton to="/contact" color="primary">
-        Contact
-        </UButton>
-
-        <UColorModeButton />
+        </div>
       </template>
     </UHeader>
 
@@ -54,10 +64,12 @@ useSeoMeta({
       <NuxtPage />
     </UMain>
 
-    <UFooter>
+    <UFooter
+      class="border-t border-white/10 bg-[#07110b]"
+    >
       <template #left>
-        <p class="text-sm text-muted">
-          © {{ new Date().getFullYear() }} Arthur Longrée. Tous droits réservés.
+        <p class="text-sm text-white/50">
+          © {{ new Date().getFullYear() }} Hawk. Tous droits réservés.
         </p>
       </template>
     </UFooter>

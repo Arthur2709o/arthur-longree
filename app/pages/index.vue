@@ -1,178 +1,185 @@
-<!-- INTRO PAGE ACCUEIL -->
+<script setup lang="ts">
+const search = ref('')
+const players = ref<any[]>([])
+const loadingSearch = ref(false)
 
-<template>
-  <div>
-<section class="relative overflow-hidden">
-  <!-- Fond moderne -->
-  <div class="absolute inset-0 -z-10">
-    <div class="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/20 blur-3xl" />
-    <div class="absolute right-20 top-40 h-72 w-72 rounded-full bg-blue-500/10 blur-3xl" />
-    <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(148,163,184,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(148,163,184,0.08)_1px,transparent_1px)] bg-[size:48px_48px]" />
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-background/70 to-background" />
-  </div>
+let searchTimeout: ReturnType<typeof setTimeout>
 
-  <UPageHero
-    title="Arthur Longrée"
-    description="Passionné par le marketing digital, je vulgarise et t'aide à développer la présence en ligne de ton entreprise gratuitement. Découvre l'ensemble de mes conseils."
-    :links="[{
-      label: 'Découvrir mes expertises',
-      to: '/expertises',
-      trailingIcon: 'i-lucide-arrow-right',
-      size: 'xl'
-    }, {
-      label: 'Me contacter',
-      to: '/contact',
-      icon: 'i-lucide-mail',
-      size: 'xl',
-      color: 'neutral',
-      variant: 'subtle'
-    }]"
-  />
-</section>
-
-<!-- INTRO DOMAINES -->
-
-    <UPageSection
-      id="features"
-      title="Mes domaines de prédilection"
-      description="Démarre l'aventure digitale de ton entreprise avec de solides conseils sur ces différents points."
-      :features="[{
-  icon: 'i-lucide-search',
-  title: 'Search Engine Optimization',
-  description: 'Optimisation du référencement naturel afin d’améliorer la visibilité de ton entreprise sur Google et attirer des visiteurs qualifiés.'
-}, {
-  icon: 'i-lucide-badge-dollar-sign',
-  title: 'Search Engine Advertising',
-  description: 'Création et gestion de campagnes Google Ads performantes pour générer rapidement des leads, appels et conversions.'
-}, {
-  icon: 'i-lucide-monitor-smartphone',
-  title: 'Création de site internet',
-  description: 'Conception de sites modernes, rapides et optimisés pour l’expérience utilisateur, le référencement et la conversion.'
-}]"
-    />
-    <!-- CERTIFICATIONS -->
-<UPageSection>
-  <div class="max-w-4xl mx-auto text-center mb-12">
-    <p class="text-primary font-semibold uppercase tracking-wider">
-      Certifications
-    </p>
-
-    <h2 class="mt-4 text-4xl font-bold tracking-tight">
-      Des compétences validées par des plateformes reconnues
-    </h2>
-
-    <p class="mt-6 text-lg text-muted">
-      SEO, SEA, publicité digitale, IA, email marketing et création de contenu :
-      mes certifications renforcent une approche à la fois stratégique, technique et orientée performance.
-    </p>
-  </div>
-
-  <div class="overflow-hidden">
-    <div class="flex gap-4 animate-[scroll_35s_linear_infinite] w-max">
-      <UCard
-        v-for="certification in [
-          'Google Ads - Réseau de Recherche',
-          'Google Ads - Réseau Display',
-          'Google Ads - Mesures',
-          'Annonces axées sur les performances et optimisées par l’IA',
-          'Microsoft Advertising Search',
-          'Semrush - Principes de SEO',
-          'Semrush - Cours accéléré SEO',
-          'Meta - Advertising with Meta',
-          'Reddit Ads Fundamentals',
-          'AI SEO - Generative Engine Optimization',
-          'Mailchimp - E-mail Marketing Campaign',
-          'Canva - Les indispensables de l’enseignement'
-        ]"
-        :key="certification"
-        class="min-w-[280px] p-5"
-      >
-        <div class="flex items-start gap-4">
-          <div class="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
-            <UIcon name="i-lucide-award" class="h-5 w-5 text-primary" />
-          </div>
-
-          <div>
-            <p class="font-semibold leading-snug">
-              {{ certification }}
-            </p>
-            <p class="mt-2 text-sm text-muted">
-              Certification validée
-            </p>
-          </div>
-        </div>
-      </UCard>
-
-      <UCard
-        v-for="certification in [
-          'Google Ads - Réseau de Recherche',
-          'Google Ads - Réseau Display',
-          'Google Ads - Mesures',
-          'Annonces axées sur les performances et optimisées par l’IA',
-          'Microsoft Advertising Search',
-          'Semrush - Principes de SEO',
-          'Semrush - Cours accéléré SEO',
-          'Meta - Advertising with Meta',
-          'Reddit Ads Fundamentals',
-          'AI SEO - Generative Engine Optimization',
-          'Mailchimp - E-mail Marketing Campaign',
-          'Canva - Les indispensables de l’enseignement'
-        ]"
-        :key="`duplicate-${certification}`"
-        class="min-w-[280px] p-5"
-      >
-        <div class="flex items-start gap-4">
-          <div class="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center">
-            <UIcon name="i-lucide-award" class="h-5 w-5 text-primary" />
-          </div>
-
-          <div>
-            <p class="font-semibold leading-snug">
-              {{ certification }}
-            </p>
-            <p class="mt-2 text-sm text-muted">
-              Certification validée
-            </p>
-          </div>
-        </div>
-      </UCard>
-    </div>
-  </div>
-
-  <div class="mt-12 flex justify-center">
-    <UButton
-      to="/expertises"
-      size="xl"
-      trailing-icon="i-lucide-arrow-right"
-    >
-      Découvrir mes expertises
-    </UButton>
-  </div>
-</UPageSection>
-
-    <UPageSection>
-<UPageCTA
-  title="Prêt à développer votre présence digitale ?"
-  description="SEO, publicité Google, création de site internet, visibilité locale, expérience utilisateur, conversions… Découvrez gratuitement mes conseils et analyses autour du marketing digital moderne."
-  variant="subtle"
-  :links="[{
-  label: 'Me contacter',
-  to: '/contact',
-  trailingIcon: 'i-lucide-arrow-right',
-  color: 'neutral'
-}]"
-      />
-    </UPageSection>
-  </div>
-</template>
-<style>
-@keyframes scroll {
-  from {
-    transform: translateX(0);
+async function searchPlayers() {
+  if (search.value.length < 3) {
+    players.value = []
+    return
   }
 
-  to {
-    transform: translateX(-50%);
+  loadingSearch.value = true
+
+  try {
+    players.value = await $fetch('/api/players/search', {
+      query: { text: search.value }
+    })
+  } finally {
+    loadingSearch.value = false
   }
 }
-</style>
+
+watch(search, () => {
+  clearTimeout(searchTimeout)
+  searchTimeout = setTimeout(searchPlayers, 300)
+})
+
+async function selectPlayer(player: any) {
+  await navigateTo(`/joueur/${player.NumFed}`)
+}
+</script>
+
+<template>
+  <div class="relative min-h-screen overflow-hidden bg-[#07110b] text-white">
+    <!-- Background -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute left-1/2 top-0 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-lime-300/25 blur-3xl" />
+      <div class="absolute right-[-120px] top-40 h-[420px] w-[420px] rounded-full bg-yellow-300/20 blur-3xl" />
+      <div class="absolute left-[-120px] bottom-20 h-[420px] w-[420px] rounded-full bg-emerald-500/20 blur-3xl" />
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.06)_1px,transparent_1px)] bg-[size:28px_28px]" />
+    </div>
+
+    <UContainer class="py-20">
+      <!-- HERO -->
+      <section class="relative mx-auto max-w-6xl rounded-[2rem] border border-lime-300/30 bg-white/10 p-8 shadow-2xl backdrop-blur md:p-16">
+        <div class="absolute right-8 top-8 hidden rounded-full border border-lime-300/30 bg-lime-300/10 px-4 py-2 text-sm font-semibold text-lime-200 md:block">
+          Live tennis data
+        </div>
+
+        <div class="mx-auto max-w-4xl text-center">
+          <p class="font-semibold uppercase tracking-[0.35em] text-lime-300">
+            Hawk by Arthur Longrée
+          </p>
+
+          <h1 class="mt-5 text-5xl font-black tracking-tight md:text-6xl">
+            Chaque joueur a une histoire,
+            <span class="block text-lime-300">
+              Les statistiques la racontent.
+            </span>
+          </h1>
+
+          <p class="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/70">
+            Recherchez un joueur affilié, consultez son classement, son club et ses informations principales dans une interface plus moderne et lisible.
+          </p>
+
+          <!-- Search -->
+          <div class="relative mx-auto mt-10 max-w-2xl">
+            <UInput
+              v-model="search"
+              icon="i-lucide-search"
+              size="xl"
+              placeholder="Tape un nom, ex : Longrée, Englebert, Dupont..."
+              class="w-full"
+              :ui="{
+                base: 'h-14 rounded-2xl bg-white text-slate-900 ring-2 ring-lime-300/40 placeholder:text-slate-400'
+              }"
+            />
+
+            <div
+              v-if="players.length"
+              class="absolute z-50 mt-4 max-h-[360px] w-full overflow-auto rounded-3xl border border-lime-300/30 bg-[#101b12]/95 p-2 text-left shadow-2xl backdrop-blur"
+            >
+              <button
+                v-for="player in players"
+                :key="player.NumFed"
+                class="flex w-full items-center justify-between rounded-2xl px-5 py-4 transition hover:bg-lime-300/10"
+                @click="selectPlayer(player)"
+              >
+                <div>
+                  <p class="font-bold text-white">
+                    {{ player.Prenom }} {{ player.Nom }}
+                  </p>
+                  <p class="text-sm text-white/50">
+                    N° {{ player.NumFed }}
+                  </p>
+                </div>
+
+                <UBadge color="primary" variant="solid">
+                  {{ player.ClasmtSimple?.trim() }}
+                </UBadge>
+              </button>
+            </div>
+          </div>
+
+          <p v-if="loadingSearch" class="mt-4 text-sm text-lime-200">
+            Recherche en cours...
+          </p>
+        </div>
+      </section>
+
+      <!-- Loading -->
+      <div v-if="loadingPlayer" class="mt-12 text-center text-white/70">
+        Chargement de la fiche joueur...
+      </div>
+
+      <!-- Player result -->
+      <section
+        v-if="selectedPlayer"
+        class="mt-12 grid gap-6 lg:grid-cols-[360px_1fr]"
+      >
+        <UCard class="border-lime-300/20 bg-white/10 backdrop-blur">
+          <div class="text-center">
+            <div class="mx-auto flex h-32 w-32 items-center justify-center rounded-full bg-lime-300/20">
+              <UIcon name="i-lucide-user-round" class="h-16 w-16 text-lime-300" />
+            </div>
+
+            <h2 class="mt-6 text-3xl font-black text-white">
+              {{ selectedPlayer.pageTitle }}
+            </h2>
+
+            <UBadge color="primary" size="lg" class="mt-5">
+              {{ selectedPlayer.fiche['Classement simple :'] || selectedPlayer.fiche['Classement simple  :'] }}
+            </UBadge>
+          </div>
+        </UCard>
+
+        <div class="grid gap-5 md:grid-cols-2">
+          <UCard class="bg-white/10 backdrop-blur">
+            <p class="text-sm text-lime-200">Club</p>
+            <p class="mt-2 text-2xl font-black text-white">
+              {{ selectedPlayer.fiche['Club:'] || 'Non renseigné' }}
+            </p>
+          </UCard>
+
+          <UCard class="bg-white/10 backdrop-blur">
+            <p class="text-sm text-lime-200">Classement interclubs</p>
+            <p class="mt-2 text-2xl font-black text-white">
+              {{ selectedPlayer.fiche['Classement simple interclubs :'] || 'Non renseigné' }}
+            </p>
+          </UCard>
+
+          <UCard class="bg-white/10 backdrop-blur">
+            <p class="text-sm text-lime-200">Nationalité</p>
+            <p class="mt-2 text-2xl font-black text-white">
+              {{ selectedPlayer.fiche['Nationalité:'] || 'Non renseignée' }}
+            </p>
+          </UCard>
+
+          <UCard class="bg-white/10 backdrop-blur">
+            <p class="text-sm text-lime-200">Valeur double</p>
+            <p class="mt-2 text-2xl font-black text-white">
+              {{ selectedPlayer.fiche['Valeur double:'] || 'Non renseignée' }}
+            </p>
+          </UCard>
+
+          <UCard class="bg-white/10 backdrop-blur">
+            <p class="text-sm text-lime-200">Première affiliation</p>
+            <p class="mt-2 text-2xl font-black text-white">
+              {{ selectedPlayer.fiche['Première affiliation:'] || 'Non renseignée' }}
+            </p>
+          </UCard>
+
+          <UCard class="bg-white/10 backdrop-blur">
+            <p class="text-sm text-lime-200">Actif depuis</p>
+            <p class="mt-2 text-2xl font-black text-white">
+              {{ selectedPlayer.fiche['Actif depuis le:'] || 'Non renseigné' }}
+            </p>
+          </UCard>
+        </div>
+      </section>
+    </UContainer>
+  </div>
+</template>
