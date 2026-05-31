@@ -2,7 +2,6 @@
 const form = reactive({
   name: '',
   email: '',
-  company: '',
   message: ''
 })
 
@@ -13,59 +12,100 @@ function submitForm() {
 </script>
 
 <template>
-  <UContainer class="py-24">
-    <div class="max-w-3xl mx-auto">
-      <div class="mb-12 text-center">
-        <h1 class="text-5xl font-bold">
-          Me contacter
-        </h1>
+  <div class="min-h-screen bg-[#07110b] text-white">
+    <UContainer class="py-24">
+      <div class="max-w-3xl mx-auto">
 
-        <p class="mt-6 text-lg text-muted">
-          Une question ? Laissez-moi un message et je vous répondrai rapidement.
-        </p>
-      </div>
+        <div class="mb-12 text-center">
+          <p class="font-semibold uppercase tracking-[0.35em] text-[#B7F34D]">
+            HAWK
+          </p>
 
-      <UCard class="p-6 md:p-10">
-        <form class="flex flex-col gap-6" @submit.prevent="submitForm">
-          <UFormField label="Nom complet">
-            <UInput
-              v-model="form.name"
-              placeholder="Votre nom"
-              size="xl"
-              class="w-full"
-            />
-          </UFormField>
+          <h1 class="mt-4 text-5xl font-black">
+            Me contacter
+          </h1>
 
-          <UFormField label="Adresse email">
-            <UInput
-              v-model="form.email"
-              type="email"
-              placeholder="vous@email.com"
-              size="xl"
-              class="w-full"
-            />
-          </UFormField>
+          <p class="mt-6 text-lg text-white/60">
+            Une question ? Laissez-moi un message et je vous répondrai rapidement.
+          </p>
+        </div>
 
-          <UFormField label="Message">
-            <UTextarea
-              v-model="form.message"
-              placeholder="Expliquez votre besoin, votre projet ou votre question..."
-              :rows="8"
-              size="xl"
-              class="w-full"
-            />
-          </UFormField>
-
-          <UButton
-            type="submit"
-            size="xl"
-            block
-            class="mt-4"
+        <UCard
+          class="p-8 md:p-10 border border-[#B7F34D]/30 bg-white/10 backdrop-blur-xl shadow-[0_0_50px_rgba(183,243,77,0.10)]"
+        >
+          <form
+            class="flex flex-col gap-6"
+            @submit.prevent="submitForm"
           >
-            Envoyer le message
-          </UButton>
-        </form>
-      </UCard>
-    </div>
-  </UContainer>
+            <UFormField>
+              <template #label>
+                <span class="text-white/80 font-medium">
+                  Nom complet
+                </span>
+              </template>
+
+              <UInput
+                v-model="form.name"
+                placeholder="Votre nom"
+                size="xl"
+                class="w-full"
+                :ui="{
+                  base: 'bg-white/10 text-white placeholder:text-white/40 border border-[#B7F34D]/40 ring-0 focus:ring-2 focus:ring-[#B7F34D]/60'
+                }"
+              />
+            </UFormField>
+
+            <UFormField>
+              <template #label>
+                <span class="text-white/80 font-medium">
+                  Adresse email
+                </span>
+              </template>
+
+              <UInput
+                v-model="form.email"
+                type="email"
+                placeholder='vous@email.com'
+                size="xl"
+                class="w-full"
+                :ui="{
+                  base: 'bg-white/10 text-white placeholder:text-white/40 border border-[#B7F34D]/40 ring-0 focus:ring-2 focus:ring-[#B7F34D]/60'
+                }"
+              />
+            </UFormField>
+
+            <UFormField>
+              <template #label>
+                <span class="text-white/80 font-medium">
+                  Message
+                </span>
+              </template>
+
+              <UTextarea
+                v-model="form.message"
+                placeholder="Expliquez votre besoin, votre projet ou votre question..."
+                :rows="8"
+                size="xl"
+                class="w-full"
+                :ui="{
+                  base: 'bg-white/10 text-white placeholder:text-white/40 border border-[#B7F34D]/40 ring-0 focus:ring-2 focus:ring-[#B7F34D]/60'
+                }"
+              />
+            </UFormField>
+
+            <UButton
+              type="submit"
+              size="xl"
+              block
+              class="mt-4 bg-[#B7F34D] hover:bg-[#C9FF63] text-black font-semibold border-0"
+            >
+              Envoyer le message
+            </UButton>
+
+          </form>
+        </UCard>
+
+      </div>
+    </UContainer>
+  </div>
 </template>
