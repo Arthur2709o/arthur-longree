@@ -94,12 +94,21 @@ useSeoMeta({
       <NuxtPage />
     </UMain>
 
-    <UFooter class="border-t border-white/10 bg-[#07110b]">
-      <template #left>
-        <p class="text-sm text-white/50">
-          © {{ new Date().getFullYear() }} Hawk. Tous droits réservés.
-        </p>
-      </template>
-    </UFooter>
+<UFooter class="border-t border-white/10 bg-[#07110b]">
+  <template #left>
+    <p class="text-sm text-white/50">
+      © {{ new Date().getFullYear() }} Hawk. Tous droits réservés.
+    </p>
+  </template>
+
+  <template #right>
+    <NuxtLink
+      to="/politique-confidentialite"
+      class="text-sm text-white/50 transition hover:text-[#B7F34D]"
+    >
+      Politique de confidentialité
+    </NuxtLink>
+  </template>
+</UFooter>
   </UApp>
 </template>
